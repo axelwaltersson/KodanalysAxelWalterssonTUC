@@ -8,6 +8,7 @@
 
         public void AddUser()
         {
+            Console.Clear();
             Console.Write("Ange namn: ");
             string newUserName = Console.ReadLine();
             if (totalUsers < maxUsers)
@@ -15,23 +16,32 @@
                 userNames[totalUsers] = newUserName;
                 totalUsers++;
             }
+
+            if (totalUsers >= maxUsers)
+            {
+                Console.WriteLine("Max antal användare nått.");
+            }
             else
             {
-                Console.WriteLine("Listan är full!");
+                Console.WriteLine("Användare tillagd: " + newUserName);
+                AnyKeyMessage("Tryck på valfri tangent för att fortsätta...");
             }
         }
 
         public void ListUsers()
         {
-            Console.WriteLine("Användare:");
+            Console.Clear();
+            Console.WriteLine("Användare: ");
             for (int i = 0; i < totalUsers; i++)
             {
                 Console.WriteLine(userNames[i]);
             }
+            AnyKeyMessage("Tryck på valfri tangent för att fortsätta...");
         }
 
         public void RemoveUser()
         {
+            Console.Clear();
             Console.Write("Ange namn att ta bort: ");
             string userNameToRemove = Console.ReadLine();
             int userIndexToRemove = -1;
@@ -56,9 +66,12 @@
             {
                 Console.WriteLine("Användaren hittades inte.");
             }
+            AnyKeyMessage("Tryck på valfri tangent för att fortsätta...");
         }
+
         public void SearchUser()
-            {
+        {
+            Console.Clear();
             Console.Write("Ange namn att söka: ");
             string userNameToSearch = Console.ReadLine();
             bool userExists = false;
@@ -78,10 +91,19 @@
             {
                 Console.WriteLine("Användaren hittades inte.");
             }
+            AnyKeyMessage("Tryck på valfri tangent för att fortsätta...");
         }
+
         public void ExitProgram()
-            {
+        {
                 Environment.Exit(0);
+        }
+
+        public void AnyKeyMessage(string meddelande)
+        {
+            Console.WriteLine(meddelande);
+            Console.ReadKey();
+            Console.Clear();
         }
     }      
 }

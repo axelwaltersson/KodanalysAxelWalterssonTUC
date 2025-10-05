@@ -11,7 +11,6 @@
                 GenereraMeny();
                 string menuSelection = Console.ReadLine();
 
-
                 switch (menuSelection)
                 {
                     case "1":
@@ -30,11 +29,16 @@
                         meny.ExitProgram();
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("Ogiltigt val.");
+                        Console.WriteLine("Tryck på valfri tangent för att fortsätta...");
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
             }
         }
+
         public static void GenereraMeny()
         {
             Console.WriteLine("Välj ett alternativ:");
